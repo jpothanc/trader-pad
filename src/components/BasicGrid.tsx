@@ -3,12 +3,12 @@ import { useMemo } from "react";
 import "ag-grid-community/styles/ag-grid.css";
 import "ag-grid-community/styles/ag-theme-alpine.css";
 import "ag-grid-community/styles/ag-theme-material.css";
-import "../index.css";
-interface blotterProps {
+
+type blotterProps = {
   columnDefs: any;
   rowData: any;
   theme: string;
-}
+};
 
 const BasicGrid = ({ columnDefs, rowData, theme }: blotterProps) => {
   const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
@@ -17,6 +17,7 @@ const BasicGrid = ({ columnDefs, rowData, theme }: blotterProps) => {
     () => ({
       sortable: true,
       filter: true,
+      cellStyle: { fontSize: "12px" },
     }),
     []
   );

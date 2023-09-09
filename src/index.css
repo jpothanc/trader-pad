@@ -72,24 +72,32 @@ body {
   font-size: 14px;
 
   display: grid;
-    grid-template-columns: 300px 600px 1fr;
+    grid-template-columns: 300px 1fr;
     grid-template-areas:
-      "logo func menus"
+      "logo func"
 
+}
+
+.banner {
+  grid-column: logo;
+}
+
+.functions {
+  grid-column: func;
+  display: flex;
+  --column-gap: 1px;
+  justify-content: end;
 }
 
 .icon {
   margin-right: 3px;
   color: rgba(255, 255, 255, 0.17);
-
 }
 
 .logo {
   display: flex;
   align-items: center;
   column-gap: 10px;
-  grid-column: logo;
-
 }
 
 .logo__img {
@@ -105,13 +113,8 @@ body {
 
 .nav {
   transition: all 0.3s ease-in-out;
-  
-  
 }
 
-.banner{
-  grid-column: logo;
-}
 
 .nav__list_f {
   display: flex;
@@ -132,9 +135,14 @@ shift + alt + down - copy
 alt + done to move the linw
 
 */
+
 .nav__link {
   color: rgba(255, 255, 255, 0.5);
-  transition: all 0.2s
+  transition: all 0.2s;
+  text-decoration: none;
+  display: flex;
+  align-items: bottom;
+    justify-content: center;
 }
 
 .nav__link:hover,
@@ -144,7 +152,7 @@ alt + done to move the linw
 
 .btn {
   color: #fff;
-  background-color: #2168ca76;
+  background-color: #0c8eec76;
   padding: 8px 20px;
   --border-radius: 5000px;
   font-size: 12px;
@@ -154,7 +162,7 @@ alt + done to move the linw
 }
 
 .btn:hover {
-  background-color: #3e8fe0;
+  background-color: #2b74bd;
 }
 
 .hamburger {
@@ -198,6 +206,7 @@ alt + done to move the linw
   .btn {
     font-size: 11px;
     padding: 7px 17px;
+    background-color: #3e8fe0;
   }
 
   .hamburger {

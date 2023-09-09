@@ -1,5 +1,6 @@
+import React from "react";
 import { useState } from "react";
-
+import { Link } from "react-router-dom";
 const NavBar = () => {
   const [navStyle, setNavStyle] = useState("nav");
   const [hamStyle, setHamStyle] = useState("hamburger");
@@ -23,19 +24,19 @@ const NavBar = () => {
             <nav className={navStyle} data-identifier="navStyle">
               <ul className="nav__list">
                 <li className="nav__item">
-                  <a href="/" className="nav__link">
+                  <Link className="nav__link" to="/">
                     Tickets
-                  </a>
+                  </Link>
                 </li>
                 <li className="nav__item">
-                  <a href="/watch" className="nav__link">
+                  <Link className="nav__link" to="/watch">
                     Watch
-                  </a>
+                  </Link>
                 </li>
                 <li className="nav__item">
-                  <a href="/about" className="nav__link">
+                  <Link className="nav__link" to="/about">
                     About
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </nav>
@@ -60,25 +61,14 @@ const NavBar = () => {
                 <span className="logo__text">Trader Pad</span>
               </a>
             </div>
-            <nav className={navStyle} data-identifier="navStyle">
-              <ul className="nav__list_f">
-                <li className="nav__item">
-                  <a href="/about" className="btn">
-                    Order Entry
-                  </a>
-                </li>
-                <li className="nav__item">
-                  <a href="/about" className="btn">
-                    Send
-                  </a>
-                </li>
-                <li className="nav__item">
-                  <a href="/about" className="btn">
-                    Cancel
-                  </a>
-                </li>
-              </ul>
-            </nav>
+            <div className="functions">
+              <button className="btn">Order Entry</button>
+              <button className="btn">Send</button>
+              <button className="btn">Amend</button>
+              <button className="btn">Cancel</button>
+              <button className="btn">Export</button>
+            </div>
+
             <div
               className={hamStyle}
               data-identifier="hamStyle"

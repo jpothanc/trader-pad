@@ -8,8 +8,8 @@ import NavBar from "./components/NavBar";
 const App = () => {
   return (
     <>
-      <NavBar />
       <Router>
+        <NavBar />
         <Routes>
           <Route path="/" element={<TicketBlotter />} />
           <Route path="/watch" element={<WatchList />} />

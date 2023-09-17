@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@hookform/resolvers": "^3.3.1",
     "@microsoft/signalr": "^7.0.10",
     "@types/node": "^20.5.6",
     "ag-grid-community": "^30.1.0",
@@ -21,9 +22,13 @@
     "proto-loader": "^0.2.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-hook-form": "^7.46.1",
     "react-router-dom": "^6.15.0",
+    "react-select": "^5.7.4",
     "reflect-metadata": "^0.1.13",
-    "rxjs": "^7.8.1"
+    "rxjs": "^7.8.1",
+    "tailwindcss": "^3.3.3",
+    "zod": "^3.22.2"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",

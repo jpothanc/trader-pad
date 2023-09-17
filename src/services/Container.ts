@@ -12,6 +12,7 @@ container
   .bind<IEventManager>("EventManager")
   .to(EventManager)
   .inSingletonScope();
+
 container.bind<IOrderCache>("OrderCache").to(OrderCache).inSingletonScope();
 
 export default container;

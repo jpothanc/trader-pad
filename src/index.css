@@ -17,7 +17,7 @@ ul {
 /*BASE STYLES*/
 body {
   background-color: rgb(212, 219, 224);
-  font-family: 'inter', sans-serif;
+  font-family: "inter", sans-serif;
   height: 100vh;
   padding-top: 90px;
 }
@@ -44,13 +44,11 @@ body {
   justify-content: end;
   column-gap: 20px;
   display: grid;
-    grid-template-columns: 300px  1fr;
-    grid-template-areas:
-      "menu support"
-  
+  grid-template-columns: 300px 1fr;
+  grid-template-areas: "menu support";
 }
 
-.support{
+.support {
   grid-column: "support";
   font-size: 12px;
   display: flex;
@@ -72,10 +70,8 @@ body {
   font-size: 14px;
 
   display: grid;
-    grid-template-columns: 300px 1fr;
-    grid-template-areas:
-      "logo func"
-
+  grid-template-columns: 300px 1fr;
+  grid-template-areas: "logo func";
 }
 
 .banner {
@@ -115,7 +111,6 @@ body {
   transition: all 0.3s ease-in-out;
 }
 
-
 .nav__list_f {
   display: flex;
   align-items: flex-start;
@@ -142,12 +137,12 @@ alt + done to move the linw
   text-decoration: none;
   display: flex;
   align-items: bottom;
-    justify-content: center;
+  justify-content: center;
 }
 
 .nav__link:hover,
 .nav__link:focus {
-  color: rgb(26, 127, 181)
+  color: rgb(26, 127, 181);
 }
 
 .btn {
@@ -158,7 +153,6 @@ alt + done to move the linw
   font-size: 12px;
   text-transform: uppercase;
   font-weight: 500;
-
 }
 
 .btn:hover {
@@ -167,7 +161,6 @@ alt + done to move the linw
 
 .hamburger {
   display: none;
-
 }
 
 .bar {
@@ -179,7 +172,7 @@ alt + done to move the linw
   transition: all 0.3s ease-in-out;
 }
 
-@media (max-width : 650px) {
+@media (max-width: 650px) {
   .nav {
     position: fixed;
     top: 90px;
@@ -188,15 +181,12 @@ alt + done to move the linw
     width: 100%;
     padding: 10px 0 20px;
     transform: translateX(-100%);
-
-
   }
 
   .nav__list {
     flex-direction: column;
     align-items: center;
     row-gap: 20px;
-
   }
 
   .nav__link {
@@ -211,11 +201,9 @@ alt + done to move the linw
 
   .hamburger {
     display: block;
-
-
   }
 
-  @media (max-width : 360px) {
+  @media (max-width: 360px) {
     .top-bar__content {
       font-size: 10px;
       justify-content: center;
@@ -235,7 +223,6 @@ alt + done to move the linw
 
   .hamburger--open .bar:nth-child(1) {
     transform: translateY(7px) rotate(45deg);
-
   }
 
   .hamburger--open .bar:nth-child(2) {
@@ -244,7 +231,6 @@ alt + done to move the linw
 
   .hamburger--open .bar:nth-child(3) {
     transform: translateY(-7px) rotate(-45deg);
-
   }
 }
 
@@ -252,14 +238,13 @@ alt + done to move the linw
 .content {
   height: 100vh;
   background-color: rgb(143, 182, 210);
-  font-family: 'inter', sans-serif;
+  font-family: "inter", sans-serif;
   display: grid;
   grid-template-columns: 360px 1fr;
   grid-template-rows: 60px 1fr;
   grid-template-areas:
     "side header"
     "side main";
-
 }
 
 .sideBar {
@@ -278,9 +263,7 @@ alt + done to move the linw
   grid-template-areas:
     "c1 c2 c3"
     "c4 c4 c5"
-    "c4 c4 c6"
-  ;
-
+    "c4 c4 c6";
 }
 
 .headerContent {
@@ -293,7 +276,7 @@ alt + done to move the linw
   height: 20;
 }
 
-div:hover> :nth-child(1) {
+div:hover > :nth-child(1) {
   background-repeat: repeat;
 }
 
@@ -302,9 +285,8 @@ div:hover> :nth-child(1) {
   transition: all 0.3s;
 }
 
-
 .card:nth-child(1):hover {
-  transform: scale(110%)
+  transform: scale(110%);
 }
 
 .card:nth-child(1) {
@@ -332,7 +314,6 @@ div:hover> :nth-child(1) {
 }
 
 @media (max-width: 925px) {
-
   .main {
     grid-template-columns: 1fr;
     grid-template-rows: repeat(6, 200px);
@@ -351,4 +332,42 @@ div:hover> :nth-child(1) {
   --ag-row-border-style: dashed;
   --ag-row-border-width: 5px;
   --ag-row-border-color: rgb(150, 150, 200);
+}
+
+/* styles.css */
+.custom-select {
+  width: 200px; /* Adjust the width as needed */
+}
+
+/* Style for the container */
+.oe-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.oe-header {
+  background-color: black;
+  color: white;
+  width: 300px;
+  padding: 10px;
+  text-align: center;
+  border: 2px solid #ccc;
+}
+
+/* Custom input styles */
+.oe-input {
+  width: 300px; /* Adjust the width as needed */
+  padding: 10px;
+  font-size: 16px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+  background-color: black;
+  color: #007bff;
+  transition: border-color 0.2s;
+}
+
+/* Add a border color change on focus */
+.oe-input:focus {
+  border-color: #007bff; /* Adjust the color as needed */
 }

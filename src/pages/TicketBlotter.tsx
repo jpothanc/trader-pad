@@ -22,6 +22,11 @@ const TicketBlotter = () => {
     console.log("Refreshing Blotter");
     setRowData(cache.get());
   }, []);
+  useEffect(() => {
+    refreshBlotter();
+
+    return () => {};
+  }, []);
 
   useEffect(() => {
     var s = signalRService.subscribeToEvent((data) => {
@@ -33,8 +38,10 @@ const TicketBlotter = () => {
         console.log("Getting Data");
         gridData = [JSON.parse(data), ...prev];
       } else {
-        gridData = helperJs.fetchRowData();
-        console.log("Setting data" + gridData);
+        //debugger;
+        gridData = [JSON.parse(data)];
+        // gridData = helperJs.fetchRowData();
+        //console.log("Setting data" + gridData);
         // setRowData((prevData: any) => {
         //   var parsed = [JSON.parse(firstData), ...prevData];
         //   cache.set(parsed);

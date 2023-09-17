@@ -16,5 +16,5 @@ export const About = () => {
 
   return <div>About</div>;
 };
-
+2;
 export default About;

@@ -1,6 +1,5 @@
-import * as React from "react";
 import { AgGridReact } from "ag-grid-react";
-import { useMemo, useRef, useCallback } from "react";
+import { useMemo, useRef } from "react";
 import "ag-grid-community/styles/ag-grid.css";
 import "ag-grid-community/styles/ag-theme-alpine.css";
 import "ag-grid-community/styles/ag-theme-material.css";
@@ -27,8 +26,10 @@ const BasicGrid = ({ columnDefs, rowData, theme }: blotterProps) => {
   // Access the grid API
 
   const onSelectionChanged = () => {
+    debugger;
     const selectedRows = gridRef?.current?.api.getSelectedRows();
-   // gridRef?.current?.api.applyTransaction({ add: [item] }); // Insert the row
+    console.log(selectedRows);
+    // gridRef?.current?.api.applyTransaction({ add: [item] }); // Insert the row
   };
 
   // function test() {

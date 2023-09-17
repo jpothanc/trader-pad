@@ -62,7 +62,9 @@ const NavBar = () => {
               </a>
             </div>
             <div className="functions">
-              <button className="btn">Order Entry</button>
+              <button className="btn">
+                <Link to="/orderentry">Order Entry</Link>
+              </button>
               <button className="btn">Send</button>
               <button className="btn">Amend</button>
               <button className="btn">Cancel</button>

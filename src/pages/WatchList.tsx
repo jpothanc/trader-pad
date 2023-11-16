@@ -1,11 +1,13 @@
 import BasicGrid from "../components/BasicGrid";
 import { useMemo } from "react";
-import * as helperJs from "../services/Helper";
+
 import config from "../config.json";
+import { fetchWatchColumnDefs } from "../utils/gridHelper";
+import { fetchWatchRowData } from "../utils/data";
 
 const WatchList = () => {
-  const rowData = useMemo(() => helperJs.fetchWatchRowData(), []);
-  const columnDefs = useMemo(() => helperJs.fetchWatchColumnDefs(), []);
+  const rowData = useMemo(() => fetchWatchRowData(), []);
+  const columnDefs = useMemo(() => fetchWatchColumnDefs(), []);
 
   return (
     <>

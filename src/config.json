@@ -1,8 +1,10 @@
 {
-  "app":{
-    "theme" :"ag-theme-alpine-dark"
+  "app": {
+    "theme": "ag-theme-alpine-dark"
   },
-    "orderStore": {
-    "hub": "https://localhost:7213/hub"
+  "orderStore": {
+    "hub": "https://localhost:7213/hub",
+    "api_base_url": "https://localhost:7213/",
+    "api_orders": "orders/1"
   }
 }

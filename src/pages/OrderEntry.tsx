@@ -46,7 +46,7 @@ const OrderEntry = () => {
   };
 
   const OnSubmit = async (data: TorderCreationSchema) => {
-    const response = await fetch("https://localhost:7213/api/Order/create", {
+    const response = await fetch("https://localhost:7213/Order/create", {
       method: "POST",
       body: JSON.stringify(data),
       headers: {
@@ -73,7 +73,6 @@ const OrderEntry = () => {
         <div className="oe-container">
           <header className="oe-header">Order Entry</header>
         </div>
-        <br></br>
         <form onSubmit={handleSubmit(OnSubmit)}>
           <div className="oe-container">
             <input
@@ -86,7 +85,6 @@ const OrderEntry = () => {
               placeholder="product"
               name="product"
             />
-            <br></br>
             <input
               className="oe-input"
               {...register("size", {
@@ -98,7 +96,6 @@ const OrderEntry = () => {
               name="size"
             />
             {errors.size && <p>{`${errors.size.message}`}</p>}
-            <br></br>
             <input
               className="oe-input"
               {...register("price")}
@@ -107,7 +104,6 @@ const OrderEntry = () => {
               placeholder="price"
               name="price"
             />
-            <br></br>
             <input
               className="oe-input"
               {...register("acronym")}
@@ -116,7 +112,6 @@ const OrderEntry = () => {
               placeholder="acronym"
               name="acronym"
             />
-            <br></br>
             <input
               className="oe-input"
               {...register("account")}
@@ -125,7 +120,6 @@ const OrderEntry = () => {
               placeholder="account"
               name="account"
             />
-            <br></br>
             <input
               className="oe-input"
               {...register("entity")}
@@ -134,7 +128,6 @@ const OrderEntry = () => {
               placeholder="entity"
               name="entity"
             />
-            <br></br>
             <div>
               {/* <Controller
               name="selectField"

@@ -7,6 +7,7 @@ import About from "./pages/About";
 import NavBar from "./components/NavBar";
 
 const App = () => {
+  console.log("app");
   return (
     <>
       <Router>

@@ -1,0 +1,40 @@
+import { useEffect } from "react";
+import { IEventManager, EventData } from "../services/EventManager";
+import { getInstance, instanceNames } from "../utils/factory";
+import { IOrderService } from "../services/OrderService";
+import { IOrderCache } from "../services/OrderCache";
+
+type Props = {
+  setOrders: (arg0: any) => void;
+};
+
+const useOrderQuery = ({ setOrders }: Props) => {
+  console.log("useOrderQuery");
+  const eventManager = getInstance(instanceNames.EventManager) as IEventManager;
+  const orderService = getInstance(instanceNames.OrderService) as IOrderService;
+  const orderCache = getInstance(instanceNames.OrderCache) as IOrderCache;
+
+  useEffect(() => {
+    const signalRConnection = orderService
+      .getNotification()
+      .subscribe((data) => {
+        orderCache.update(data);
+      });
+    orderService.queryOrders("https://localhost:7213/Order/orders?criteria=1");
+
+    const subscription = eventManager
+      ?.getEvents()
+      .subscribe((event: EventData) => {
+        setOrders(event.data);
+        // const keys = Object.keys(event.data[0]);
+        // setColumns(toColumnDefs(keys));
+      });
+
+    return () => {
+      subscription?.unsubscribe();
+      signalRConnection?.unsubscribe();
+    };
+  }, []);
+};
+
+export default useOrderQuery;

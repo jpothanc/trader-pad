@@ -26,7 +26,6 @@ const BasicGrid = ({ columnDefs, rowData, theme }: blotterProps) => {
   // Access the grid API
 
   const onSelectionChanged = () => {
-    debugger;
     const selectedRows = gridRef?.current?.api.getSelectedRows();
     console.log(selectedRows);
     // gridRef?.current?.api.applyTransaction({ add: [item] }); // Insert the row

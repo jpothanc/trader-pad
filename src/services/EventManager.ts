@@ -3,26 +3,30 @@ import { injectable } from "inversify";
 
 export type EventData = {
   type: string;
-  data: number;
+  data: any;
 };
 
 export interface IEventManager {
   subscribeToEvent(callback: (data: EventData) => void): void;
-  emitEvent(data: EventData): void;
+  publish(data: EventData): void;
+  getEvents(): Subject<EventData>;
 }
 
 @injectable()
 export class EventManager {
-  private eventSubject = new Subject<EventData>();
+  private events = new Subject<EventData>();
 
   subscribeToEvent(callback: (data: EventData) => void) {
     console.log("subscribeToEvent");
-    this.eventSubject.subscribe(callback);
+    this.events.subscribe(callback);
   }
 
-  emitEvent(data: EventData) {
+  getEvents(): Subject<EventData> {
+    return this.events;
+  }
+
+  publish(data: EventData) {
     console.log("emitEvent");
-    debugger;
-    this.eventSubject.next(data);
+    this.events.next(data);
   }
 }

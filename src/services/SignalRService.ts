@@ -1,33 +1,35 @@
 import { injectable } from "inversify";
 import * as signalR from "@microsoft/signalr";
 import config from "../config.json";
-import { Subject, Subscription } from "rxjs";
+import { Subject } from "rxjs";
 
 export interface ISignalRService {
   getConnectionId(): string | null;
-  subscribeToEvent(callback: (data: any) => void): Subscription;
-  unSubscribeToEvent(subs: Subscription | null): void;
-  emitEvent(data: any): void;
+  publish(data: any): void;
+  getNotification(): Subject<any>;
 }
 
 @injectable()
 export class SignalRService implements ISignalRService {
   private connection: signalR.HubConnection;
-  private eventSubject = new Subject<any>();
-  private subscription: Subscription | null = null;
+  private notification = new Subject<any>();
 
   constructor() {
-    console.log("SignalRService Started");
     this.connection = new signalR.HubConnectionBuilder()
       .withUrl(config.orderStore.hub)
       .withAutomaticReconnect()
       .configureLogging(signalR.LogLevel.Information)
       .build();
     this.init();
+    console.log("SignalRService started.");
   }
 
-  emitEvent(data: any): void {
-    this.eventSubject.next(data);
+  getNotification(): Subject<any> {
+    return this.notification;
+  }
+
+  publish(data: any): void {
+    this.notification.next(data);
   }
 
   private async init(): Promise<void> {
@@ -43,20 +45,8 @@ export class SignalRService implements ISignalRService {
 
     this.connection?.on("notify", (data) => {
       //console.log(data);
-      this.emitEvent(data);
+      this.publish(data);
     });
-  }
-
-  subscribeToEvent(callback: (data: any) => void): Subscription {
-    console.log("subscribeToEvent");
-    this.subscription = this.eventSubject.subscribe(callback);
-    return this.subscription;
-  }
-
-  unSubscribeToEvent(subs: Subscription): void {
-    console.log("unSubscribeToEvent");
-    this.subscription?.unsubscribe();
-    subs?.unsubscribe();
   }
 
   getConnectionId() {

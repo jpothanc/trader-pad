@@ -1,7 +1,7 @@
 import BasicGrid from "../components/BasicGrid";
 import { useState, useMemo, useCallback } from "react";
 import * as gridHelper from "../utils/gridHelper";
-import config from "../config.json";
+import config from "../config/config.json";
 import useOrderQuery from "../hooks/useOrderQuery";
 import { getInstance } from "../utils/factory";
 import { IOrderCache } from "../services/OrderCache";

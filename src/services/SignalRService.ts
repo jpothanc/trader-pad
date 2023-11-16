@@ -1,16 +1,16 @@
 import { injectable } from "inversify";
 import * as signalR from "@microsoft/signalr";
-import config from "../config.json";
+import config from "../config/config.json";
 import { Subject } from "rxjs";
 
-export interface ISignalRService {
+export interface INotificationService {
   getConnectionId(): string | null;
   publish(data: any): void;
   getNotification(): Subject<any>;
 }
 
 @injectable()
-export class SignalRService implements ISignalRService {
+export class SignalRService implements INotificationService {
   private connection: signalR.HubConnection;
   private notification = new Subject<any>();
 

@@ -1,12 +1,15 @@
 import { Container } from "inversify";
-import { ISignalRService, SignalRService } from "../services/SignalRService";
+import {
+  INotificationService,
+  SignalRService,
+} from "../services/SignalRService";
 import { IEventManager, EventManager } from "../services/EventManager";
 import { IOrderCache, OrderCache } from "../services/OrderCache";
 import { IOrderService, OrderService } from "./OrderService";
 
 const container = new Container();
 container
-  .bind<ISignalRService>("SignalRService")
+  .bind<INotificationService>("SignalRService")
   .to(SignalRService)
   .inSingletonScope();
 

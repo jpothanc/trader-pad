@@ -1,6 +1,6 @@
 import { inject, injectable } from "inversify";
 import type { IOrderCache } from "./OrderCache";
-import type { ISignalRService } from "./SignalRService";
+import type { INotificationService } from "./SignalRService";
 import { Subject } from "rxjs";
 
 export interface IOrderService {
@@ -11,11 +11,11 @@ export interface IOrderService {
 @injectable()
 export class OrderService implements IOrderService {
   private orderCache: IOrderCache;
-  private notifyService: ISignalRService;
+  private notifyService: INotificationService;
 
   constructor(
     @inject("OrderCache") orderCache: IOrderCache,
-    @inject("SignalRService") notifyService: ISignalRService
+    @inject("SignalRService") notifyService: INotificationService
   ) {
     this.notifyService = notifyService;
     this.orderCache = orderCache;

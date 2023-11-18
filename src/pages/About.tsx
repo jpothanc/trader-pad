@@ -1,20 +1,29 @@
-import container from "../services/Container";
-import { INotificationService } from "../services/SignalRService";
-import { IEventManager, EventData } from "../services/EventManager";
-import { useEffect } from "react";
+import { useRef } from "react";
+import OrderEntryDlg from "../dialogs/orderentry/OrderEntryDlg";
+import { ModalRef } from "../utils/dialogUtils";
 
-export const About = () => {
-  const signalRService = container.get<INotificationService>("SignalRService");
-  const eventManager = container.get<IEventManager>("EventManager");
-  useEffect(() => {
-    // Subscribe to events
-    eventManager.subscribeToEvent((data) => {
-      console.log(`Received event: ${data.type} - ${data.data}`);
-    });
-    // eventManager.
-  }, []);
+const About = () => {
+  const modalRef = useRef<ModalRef | null>(null);
 
-  return <div>About</div>;
+  const handleOpenModal = () => {
+    modalRef.current?.open();
+  };
+
+  const handleCloseModal = () => {
+    modalRef.current?.close();
+  };
+  return (
+    <>
+      <button onClick={handleOpenModal} className="btn btn-primary">
+        My Button
+      </button>
+      <button onClick={handleCloseModal} className="btn btn-primary">
+        My Button
+      </button>
+      <OrderEntryDlg title1="Alert" ref={modalRef} />
+      About
+    </>
+  );
 };
-2;
+
 export default About;

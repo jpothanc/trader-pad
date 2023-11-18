@@ -1,14 +1,8 @@
 import { zodResolver } from "@hookform/resolvers/zod";
-import { resolve } from "path";
-import {
-  useForm,
-  useController,
-  Controller,
-  type FieldValues,
-} from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { useState } from "react";
-import Select from "react-select";
+
 const orderCreationSchema = z.object({
   product: z.string().min(4, "Product must be min 4 characters long"),
   size: z.number().int(),
@@ -17,6 +11,7 @@ const orderCreationSchema = z.object({
   account: z.string(),
   entity: z.string(),
 });
+
 // .refine((data) => data.size > 5000, {
 //   message: "Size cannot be greater than 5000",
 //   path: ["size"],
@@ -58,10 +53,9 @@ const OrderEntry = () => {
 
     if (response.ok) {
       setStatus(responseData);
+    } else {
+      alert("Order Creation Failed." + responseData);
     }
-    // if (responseData.errors) {
-    //   alert("Order Creation Failed." + responseData.errors);
-    // }
 
     await new Promise((resolve) => setTimeout(resolve, 1000));
     //reset();
@@ -69,12 +63,9 @@ const OrderEntry = () => {
 
   return (
     <>
-      <header>
-        <div className="oe-container">
-          <header className="oe-header">Order Entry</header>
-        </div>
+      <div className="oe-container">
         <form onSubmit={handleSubmit(OnSubmit)}>
-          <div className="oe-container">
+          <div className="oe-input-container">
             <input
               className="oe-input"
               {...register("product", {
@@ -85,6 +76,8 @@ const OrderEntry = () => {
               placeholder="product"
               name="product"
             />
+          </div>
+          <div className="oe-input-container">
             <input
               className="oe-input"
               {...register("size", {
@@ -95,7 +88,9 @@ const OrderEntry = () => {
               placeholder="size"
               name="size"
             />
-            {errors.size && <p>{`${errors.size.message}`}</p>}
+          </div>
+          {errors.size && <p>{`${errors.size.message}`}</p>}
+          <div className="oe-input-container">
             <input
               className="oe-input"
               {...register("price")}
@@ -104,6 +99,8 @@ const OrderEntry = () => {
               placeholder="price"
               name="price"
             />
+          </div>
+          <div className="oe-input-container">
             <input
               className="oe-input"
               {...register("acronym")}
@@ -112,6 +109,8 @@ const OrderEntry = () => {
               placeholder="acronym"
               name="acronym"
             />
+          </div>
+          <div className="oe-input-container">
             <input
               className="oe-input"
               {...register("account")}
@@ -120,6 +119,8 @@ const OrderEntry = () => {
               placeholder="account"
               name="account"
             />
+          </div>
+          <div className="oe-input-container">
             <input
               className="oe-input"
               {...register("entity")}
@@ -128,19 +129,21 @@ const OrderEntry = () => {
               placeholder="entity"
               name="entity"
             />
-            <div>
-              {/* <Controller
+          </div>
+          <div>
+            {/* <Controller
               name="selectField"
               control={control}
               defaultValue={""}
               render={({ field }) => <Select {...field} options={options} />}
             /> */}
-            </div>
-            <button className="btn">Create</button>
-            <div>{status}</div>
           </div>
+          <div className="oe-input-container1">
+            <button className="btn">Create</button>
+          </div>
+          <div>{status}</div>
         </form>
-      </header>
+      </div>
     </>
   );
 };

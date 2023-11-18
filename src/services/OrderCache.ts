@@ -1,5 +1,5 @@
 import { inject, injectable } from "inversify";
-import type { IEventManager } from "./EventManager";
+import { EventId, EventType, type IEventManager } from "./EventManager";
 
 export interface IOrderCache {
   set(data: any): void;
@@ -22,14 +22,23 @@ export class OrderCache implements IOrderCache {
   }
   update(update: any): void {
     this.data = this.data.concat(JSON.parse(update));
-    this.eventManager.publish({ type: "OrderCache", data: this.data });
+    this.publishEvent(this.data);
   }
 
   set(data: any): void {
     this.data = data;
-    this.eventManager.publish({ type: "OrderCache", data: this.data });
+    this.publishEvent(this.data);
   }
   get() {
     return this.data;
+  }
+  publishEvent(data: any): void {
+    this.eventManager.publish({
+      type: EventType.ORDER,
+      id: EventId.ORDER_NOTIFICATION,
+      payload: {
+        data: data,
+      },
+    });
   }
 }

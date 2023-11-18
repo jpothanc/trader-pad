@@ -7,6 +7,7 @@ import { IOrderCache } from "../services/OrderCache";
 type Props = {
   setOrders: (arg0: any) => void;
 };
+0;
 
 const useOrderQuery = ({ setOrders }: Props) => {
   console.log("useOrderQuery");
@@ -23,9 +24,9 @@ const useOrderQuery = ({ setOrders }: Props) => {
     orderService.queryOrders("https://localhost:7213/Order/orders?criteria=1");
 
     const subscription = eventManager
-      ?.getEvents()
+      ?.getOrderEvents()
       .subscribe((event: EventData) => {
-        setOrders(event.data);
+        setOrders(event.payload.data);
         // const keys = Object.keys(event.data[0]);
         // setColumns(toColumnDefs(keys));
       });

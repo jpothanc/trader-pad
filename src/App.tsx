@@ -1,17 +1,17 @@
 //import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import TicketBlotter from "./pages/TicketBlotter";
-import OrderEntry from "./pages/OrderEntry";
+import OrderEntry from "./dialogs/orderentry/OrderEntry";
 import WatchList from "./pages/WatchList";
 import About from "./pages/About";
-import NavBar from "./components/NavBar";
+import NavBarMain from "./components/NavBarMain";
 
 const App = () => {
   console.log("app");
   return (
     <>
       <Router>
-        <NavBar />
+        <NavBarMain />
         <Routes>
           <Route path="/" element={<TicketBlotter />} />
           <Route path="/orderentry" element={<OrderEntry />} />

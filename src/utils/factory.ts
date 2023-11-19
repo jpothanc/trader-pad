@@ -3,7 +3,7 @@ import { IOrderCache } from "../services/OrderCache";
 import { IOrderService } from "../services/OrderService";
 import { INotificationService } from "../services/SignalRService";
 
-export enum instanceNames {
+export enum InstanceNames {
   OrderService = "OrderService",
   OrderCache = "OrderCache",
   EventManager = "EventManager",

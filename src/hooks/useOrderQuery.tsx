@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { IEventManager, EventData } from "../services/EventManager";
-import { getInstance, instanceNames } from "../utils/factory";
+import { getInstance, InstanceNames } from "../utils/factory";
 import { IOrderService } from "../services/OrderService";
 import { IOrderCache } from "../services/OrderCache";
 
@@ -11,9 +11,9 @@ type Props = {
 
 const useOrderQuery = ({ setOrders }: Props) => {
   console.log("useOrderQuery");
-  const eventManager = getInstance(instanceNames.EventManager) as IEventManager;
-  const orderService = getInstance(instanceNames.OrderService) as IOrderService;
-  const orderCache = getInstance(instanceNames.OrderCache) as IOrderCache;
+  const eventManager = getInstance(InstanceNames.EventManager) as IEventManager;
+  const orderService = getInstance(InstanceNames.OrderService) as IOrderService;
+  const orderCache = getInstance(InstanceNames.OrderCache) as IOrderCache;
 
   useEffect(() => {
     const signalRConnection = orderService

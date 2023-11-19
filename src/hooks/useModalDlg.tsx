@@ -1,6 +1,6 @@
 import { MutableRefObject, useEffect } from "react";
 
-import { getInstance, instanceNames } from "../utils/factory";
+import { getInstance, InstanceNames } from "../utils/factory";
 import { EventData, EventId, IEventManager } from "../services/EventManager";
 import { ModalRef } from "../utils/dialogUtils";
 
@@ -9,7 +9,7 @@ type Props = {
 };
 
 const useModalDlg = ({ modalRef }: Props) => {
-  const eventManager = getInstance(instanceNames.EventManager) as IEventManager;
+  const eventManager = getInstance(InstanceNames.EventManager) as IEventManager;
 
   useEffect(() => {
     const subscription = eventManager

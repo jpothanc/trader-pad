@@ -4,7 +4,7 @@ import config from "../config/config.json";
 import { fetchWatchColumnDefs } from "../utils/gridHelper";
 import { fetchWatchRowData } from "../utils/data";
 
-const WatchList = () => {
+const WatchListApp = () => {
   const rowData = useMemo(() => fetchWatchRowData(), []);
   const columnDefs = useMemo(() => fetchWatchColumnDefs(), []);
 
@@ -19,4 +19,4 @@ const WatchList = () => {
   );
 };
 
-export default WatchList;
+export default WatchListApp;

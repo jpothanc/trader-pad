@@ -1,6 +1,48 @@
 {
   "app": {
-    "theme": "ag-theme-alpine-dark"
+    "theme": "ag-theme-alpine-dark",
+    "dashItems": [
+      {
+        "group": "Order Management",
+        "groupIcon": "FaTicket",
+        "items": [
+          {
+            "title": "Orders",
+            "icon": "",
+            "description": "Ticket Blotter",
+            "routeType": "internal",
+            "route": "/tickets"
+          },
+          {
+            "title": "Watchlist",
+            "icon": "",
+            "description": "Stock Watchlist",
+            "routeType": "internal",
+            "route": "/watch"
+          }
+        ]
+      },
+      {
+        "group": "Insights",
+        "groupIcon": "FaSwatchbook",
+        "items": [
+          {
+            "title": "Alpha",
+            "icon": "",
+            "description": "Trading Insights",
+            "routeType": "internal",
+            "route": ""
+          },
+          {
+            "title": "Crossing",
+            "icon": "",
+            "description": "Crossing View",
+            "routeType": "internal",
+            "route": ""
+          }
+        ]
+      }
+    ]
   },
   "orderStore": {
     "hub": "https://localhost:7213/hub",

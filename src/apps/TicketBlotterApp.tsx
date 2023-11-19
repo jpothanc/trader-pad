@@ -5,8 +5,9 @@ import config from "../config/config.json";
 import useOrderQuery from "../hooks/useOrderQuery";
 import { getInstance } from "../utils/factory";
 import { IOrderCache } from "../services/OrderCache";
+import TicketToolBar from "../components/TicketToolBar";
 
-const TicketBlotter = () => {
+const TicketBlotterApp = () => {
   const [rowData, setRowData] = useState<any>([]);
 
   const cache = useMemo(() => getInstance("OrderCache") as IOrderCache, []);
@@ -20,7 +21,8 @@ const TicketBlotter = () => {
 
   return (
     <>
-      <button onClick={() => refreshBlotter()}>Refresh</button>
+      <TicketToolBar />
+      <button className="btn" onClick={() => refreshBlotter()}>&nbsp;R&nbsp;</button>
       {cache.getSize()}
       <BasicGrid
         columnDefs={columnDefs}
@@ -31,4 +33,4 @@ const TicketBlotter = () => {
   );
 };
 
-export default TicketBlotter;
+export default TicketBlotterApp;

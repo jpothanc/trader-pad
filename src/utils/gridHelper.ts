@@ -3,6 +3,8 @@ export function fetchColumnDefs(): any {
     { field: "orderid" },
     {
       field: "state",
+      width: 80,
+
       cellStyle: (params: any) => {
         if (params.value === "Live") {
           return { backgroundColor: "darkgreen" };
@@ -11,23 +13,24 @@ export function fetchColumnDefs(): any {
         }
       },
     },
-    { field: "account" },
-    { field: "product" },
-    { field: "acronym" },
-    { field: "size" },
-    { field: "price" },
-    { field: "cstamp" },
-    { field: "entity" },
-    { field: "ostamp" },
-    { field: "cstamp" },
-    { field: "qdone" },
-    { field: "txfaccount" },
+    { field: "account", width: 110 },
+    { field: "product", width: 110 },
+    { field: "acronym", width: 110 },
+    { field: "size", width: 110 },
+    { field: "price", width: 110 },
+    { field: "cstamp", width: 110 },
+    { field: "entity", width: 110 },
+    { field: "ostamp", width: 110 },
+    { field: "cstamp", width: 110 },
+    { field: "qdone", width: 110 },
+    { field: "txfaccount", width: 110 },
   ];
 }
 
 export function fetchWatchColumnDefs(): any {
+  const width = 110;
   return [
-    { field: "product" },
+    { field: "product", maxWidth: width },
     { field: "Close" },
     { field: "Ask" },
     { field: "AskSize" },

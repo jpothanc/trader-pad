@@ -4,16 +4,15 @@ import Navbar from "react-bootstrap/Navbar";
 import Avatar from "react-avatar";
 import { LinkContainer } from "react-router-bootstrap";
 import { NavDropdown } from "react-bootstrap";
-import TradeNavBar from "./TradeNavBar";
 import { useRef } from "react";
 import { EventId, IEventManager } from "../services/EventManager";
-import { getInstance, instanceNames } from "../utils/factory";
+import { getInstance, InstanceNames } from "../utils/factory";
 import useModalDlg from "../hooks/useModalDlg";
 import { ModalRef, getDialogInstance, getUIEvent } from "../utils/dialogUtils";
 
 const NavBarMain = () => {
   const modalRef = useRef<ModalRef | null>(null);
-  const eventManager = getInstance(instanceNames.EventManager) as IEventManager;
+  const eventManager = getInstance(InstanceNames.EventManager) as IEventManager;
   useModalDlg({ modalRef });
 
   return (
@@ -29,13 +28,18 @@ const NavBarMain = () => {
           <LinkContainer to="/">
             <Navbar.Brand>
               <div className="logo_main">
-                <span className="logo_text">trader pad</span>
+                <span className="logo_text">Trader Pad</span>
               </div>
             </Navbar.Brand>
           </LinkContainer>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
+              <Nav.Item>
+                <LinkContainer to="/tickets">
+                  <Nav.Link>Tickets</Nav.Link>
+                </LinkContainer>
+              </Nav.Item>
               <Nav.Item>
                 <LinkContainer to="/watch">
                   <Nav.Link>Watch</Nav.Link>
@@ -94,13 +98,12 @@ const NavBarMain = () => {
                 size="40"
                 round="50px"
                 color="black"
-                fgColor="#00bfa5"
+                fgColor="RGB(23, 162, 184)"
               />
             </div>
           </Navbar.Collapse>
         </Container>
       </Navbar>
-      <TradeNavBar />
       {getDialogInstance("OrderEntry", modalRef)}
     </>
   );

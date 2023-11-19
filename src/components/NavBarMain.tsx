@@ -7,13 +7,13 @@ import { NavDropdown } from "react-bootstrap";
 import { useRef } from "react";
 import { EventId, IEventManager } from "../services/EventManager";
 import { getInstance, InstanceNames } from "../utils/factory";
-import useModalDlg from "../hooks/useModalDlg";
+import useModalDlgEvents from "../hooks/events/useModalDlgEvents";
 import { ModalRef, getDialogInstance, getUIEvent } from "../utils/dialogUtils";
 
 const NavBarMain = () => {
   const modalRef = useRef<ModalRef | null>(null);
   const eventManager = getInstance(InstanceNames.EventManager) as IEventManager;
-  useModalDlg({ modalRef });
+  useModalDlgEvents({ modalRef });
 
   return (
     <>
@@ -50,7 +50,7 @@ const NavBarMain = () => {
                 <NavDropdown.Item
                   className="dropdown-item"
                   onClick={() =>
-                    eventManager.publish(getUIEvent(EventId.UI_ORDER_ENTRY))
+                    eventManager.publish(getUIEvent(EventId.MSG_UI_ORDER_ENTRY))
                   }
                 >
                   <Nav.Link>Order Entry</Nav.Link>

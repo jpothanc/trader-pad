@@ -2,17 +2,20 @@ import BasicGrid from "../components/BasicGrid";
 import { useState, useMemo, useCallback } from "react";
 import * as gridHelper from "../utils/gridHelper";
 import config from "../config/config.json";
-import useOrderQuery from "../hooks/useOrderQuery";
+import useOrderEvents from "../hooks/events/useOrderEvents";
 import { getInstance } from "../utils/factory";
 import { IOrderCache } from "../services/OrderCache";
 import TicketToolBar from "../components/TicketToolBar";
+import useUIEvents from "../hooks/events/useUIEvents";
+import SummaryBar from "../components/SummaryBar";
 
 const TicketBlotterApp = () => {
   const [rowData, setRowData] = useState<any>([]);
 
   const cache = useMemo(() => getInstance("OrderCache") as IOrderCache, []);
-  useOrderQuery({ setOrders: setRowData });
+  useOrderEvents({ setOrders: setRowData });
   const columnDefs = useMemo(() => gridHelper.fetchColumnDefs(), []);
+  useUIEvents({ uiEvents: () => refreshBlotter() });
 
   const refreshBlotter = useCallback(() => {
     console.log("Refreshing Blotter");
@@ -22,8 +25,8 @@ const TicketBlotterApp = () => {
   return (
     <>
       <TicketToolBar />
-      <button className="btn" onClick={() => refreshBlotter()}>&nbsp;R&nbsp;</button>
-      {cache.getSize()}
+      <SummaryBar/> 
+    {/* Tickets:({cache.getSize()}) */}
       <BasicGrid
         columnDefs={columnDefs}
         rowData={rowData}

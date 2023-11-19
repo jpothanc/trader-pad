@@ -45,8 +45,8 @@
     ]
   },
   "orderStore": {
-    "hub": "https://localhost:7213/hub",
+    "hub": "https://localhost:7213/hub/",
     "api_base_url": "https://localhost:7213/",
-    "api_orders": "orders/1"
+    "api_orders": "Order/orders?criteria=1"
   }
 }

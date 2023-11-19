@@ -1,4 +1,7 @@
-$logo-color: RGB(23, 162, 184);
+$logo-color: #03a9f4;
+$tool-bar-color: #32383D;
+$tool-bar-border_color: #171515;
+
 .dash-container {
   display: flex;
   column-gap: 1cap;
@@ -10,7 +13,6 @@ $logo-color: RGB(23, 162, 184);
   padding: 10px;
   margin: 0px auto;
   font-size: 18px;
-  padding-top: 40px;
 }
 .dash-header {
   display: flex;
@@ -69,7 +71,7 @@ $logo-color: RGB(23, 162, 184);
   align-items: center;
   column-gap: 10px;
   width: 100px;
-  height: 40px;
+  height: 25px;
   object-fit: cover;
   animation: fade-down 0.5s 0.4s backwards;
   transition: all 0.3s ease;
@@ -94,7 +96,7 @@ $logo-color: RGB(23, 162, 184);
 }
 
 .actions-nav-bar {
-  background-color: rgb(64, 66, 66);
+  background-color: $tool-bar-color;
 }
 
 .actions-nav-bar__content {
@@ -111,9 +113,49 @@ $logo-color: RGB(23, 162, 184);
 }
 
 .toolbar-btn {
-  color: #1c1b1b;
   background-color: $logo-color;
-  padding: 5px 5px;
-  font-size: 11px;
+  border: $tool-bar-border_color;
+  padding: 2px 4px;
+  font-size: 10px;
+  font-weight: 500;
+  color: black;
   text-transform: uppercase;
+  transition: all 0.3s ease;
+  &:hover {
+    background-color: rgb(4, 4, 4);
+    color: $logo-color;
+  }
+}
+
+.summary {
+  display: flex;
+  height: 50px;
+  column-gap: 15px;
+  justify-content: center;
+  align-items: center;
+  background-color: $tool-bar-color;
+  border: $tool-bar-border_color solid 1px;
+}
+.summary__item {
+  padding: 4px 5px;
+  display: flex;
+  column-gap: 2px;
+  background-color: $tool-bar-color;
+  //   border-radius: 1ch;
+  transition: all 0.3s ease;
+  &:hover {
+    filter: brightness(0.9);
+  }
+}
+
+.summary__item__value {
+  color: rgb(255, 255, 255);
+  font-size: 14px;
+}
+.summary__item__header {
+  font-size: 12px;
+}
+
+.summary__item__header__badge {
+  color: black;
 }

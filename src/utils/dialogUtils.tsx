@@ -15,13 +15,32 @@ export function getDialogInstance(name: string, ref: any) {
   }
 }
 
+export function getUIEventWithPayload(
+  eventId: EventId,
+  payload: any
+): EventData {
+  return {
+    type: EventType.GUI,
+    id: eventId,
+    payload: { data: payload },
+  };
+}
+
 export function getUIEvent(eventId: EventId): EventData {
+  return {
+    type: EventType.GUI,
+    id: eventId,
+    payload: { data: "" },
+  };
+}
+
+export function getUICallbackEvent(eventId: EventId, callback: any): EventData {
   switch (eventId) {
-    case EventId.UI_ORDER_ENTRY:
+    case EventId.MSG_UI_ORDER_ENTRY:
       return {
         type: EventType.GUI,
-        id: EventId.UI_ORDER_ENTRY,
-        payload: { data: "OrderEntry" },
+        id: EventId.MSG_UI_ORDER_ENTRY,
+        payload: { data: callback },
       };
   }
   return getUknownEvent();

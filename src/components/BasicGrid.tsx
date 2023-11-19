@@ -11,15 +11,15 @@ type blotterProps = {
 };
 
 const BasicGrid = ({ columnDefs, rowData, theme }: blotterProps) => {
-  const containerStyle = useMemo(() => ({ width: "100%", height: "100%" }), []);
-  const gridStyle = useMemo(() => ({ height: 800, width: "100%" }), []);
+  const containerStyle = useMemo(() => ({ width: "100%", height: "90%" }), []);
+  const gridStyle = useMemo(() => ({ width: "100%" }), []);
   const gridRef = useRef<AgGridReact>(null);
 
   const defaultColDef = useMemo(
     () => ({
       sortable: true,
       filter: true,
-      cellStyle: { fontSize: "12px" },
+      cellStyle: { fontSize: "11px" },
     }),
     []
   );
@@ -45,8 +45,11 @@ const BasicGrid = ({ columnDefs, rowData, theme }: blotterProps) => {
           columnDefs={columnDefs}
           defaultColDef={defaultColDef}
           rowSelection="multiple"
+          rowHeight={25}
+          headerHeight={25}
           animateRows={true}
           ref={gridRef}
+          domLayout="autoHeight"
           onSelectionChanged={() => onSelectionChanged()}
         />
       </div>

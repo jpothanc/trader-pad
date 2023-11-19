@@ -9,8 +9,9 @@ export enum EventType {
 
 export enum EventId {
   UNKNOWN = "UNKNOWN",
-  UI_ORDER_ENTRY = "UI_ORDER_ENTRY",
-  ORDER_NOTIFICATION = "ORDER_NOTIFICATION",
+  MSG_UI_ORDER_ENTRY = "MSG_UI_ORDER_ENTRY",
+  MSG_UI_REFRESH_TICKETS = "MSG_UI_REFRESH_TICKETS",
+  MSG_ORDER_NOTIFICATION = "MSG_ORDER_NOTIFICATION",
 }
 
 export type Payload = {
@@ -42,9 +43,7 @@ export class EventManager implements IEventManager {
   }
 
   publish(eventData: EventData) {
-    
-    if(eventData === undefined) 
-      return;
+    if (eventData === undefined) return;
 
     console.log(
       "publishing event: ",

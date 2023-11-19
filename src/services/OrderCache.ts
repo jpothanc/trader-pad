@@ -35,7 +35,7 @@ export class OrderCache implements IOrderCache {
   publishEvent(data: any): void {
     this.eventManager.publish({
       type: EventType.ORDER,
-      id: EventId.ORDER_NOTIFICATION,
+      id: EventId.MSG_ORDER_NOTIFICATION,
       payload: {
         data: data,
       },

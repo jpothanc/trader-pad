@@ -1,15 +1,16 @@
 import { useEffect } from "react";
-import { IEventManager, EventData } from "../services/EventManager";
-import { getInstance, InstanceNames } from "../utils/factory";
-import { IOrderService } from "../services/OrderService";
-import { IOrderCache } from "../services/OrderCache";
+import { IEventManager, EventData } from "../../services/EventManager";
+import { getInstance, InstanceNames } from "../../utils/factory";
+import { IOrderService } from "../../services/OrderService";
+import { IOrderCache } from "../../services/OrderCache";
+import config from "../../config/config.json";
 
 type Props = {
   setOrders: (arg0: any) => void;
 };
 0;
 
-const useOrderQuery = ({ setOrders }: Props) => {
+const useOrderEvents = ({ setOrders }: Props) => {
   console.log("useOrderQuery");
   const eventManager = getInstance(InstanceNames.EventManager) as IEventManager;
   const orderService = getInstance(InstanceNames.OrderService) as IOrderService;
@@ -21,7 +22,9 @@ const useOrderQuery = ({ setOrders }: Props) => {
       .subscribe((data) => {
         orderCache.update(data);
       });
-    orderService.queryOrders("https://localhost:7213/Order/orders?criteria=1");
+    const apiQueryOrders =
+      config.orderStore.api_base_url + config.orderStore.api_orders;
+    orderService.queryOrders(apiQueryOrders);
 
     const subscription = eventManager
       ?.getOrderEvents()
@@ -38,4 +41,4 @@ const useOrderQuery = ({ setOrders }: Props) => {
   }, []);
 };
 
-export default useOrderQuery;
+export default useOrderEvents;

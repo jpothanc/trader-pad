@@ -1,0 +1,49 @@
+/* Style for the container */
+.oe-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+.oe-input-container {
+  padding-bottom: 2px;
+}
+
+.oe-input-container__submit {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 10px;
+  column-gap: 2px;
+}
+/* Custom input styles */
+.oe-input {
+  width: 200px; /* Adjust the width as needed */
+  padding: 5px;
+  font-size: 13px;
+  border-radius: 5px;
+  outline: none;
+  background-color: black;
+  color: white;
+  transition: border-color 0.2s;
+}
+.status-bar {
+  padding: 1px 4px;
+  display: table-cell;
+  vertical-align: top;
+  text-align: center; /* Horizontal alignment */
+  background-color: black;
+  columns: $main-color;
+  font-size: 10px;
+}
+.status-bar__error {
+ position: bottom;
+  @extend .status-bar;
+  width: 200px;
+  color: red;
+}
+
+/* Add a border color change on focus */
+.oe-input:focus {
+  border-color: #007bff; /* Adjust the color as needed */
+  background-color: black;
+}

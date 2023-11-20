@@ -1,10 +1,13 @@
-$logo-color: #03a9f4;
-$tool-bar-color: #32383D;
+$logo-color: #4774b3;
+$main-color: #eeeeee;
+$tool-bar-color: #32383d;
 $tool-bar-border_color: #171515;
 
 .dash-container {
   display: flex;
-  column-gap: 1cap;
+  justify-content: center; /* Horizontal centering */
+  align-items: center; /* Vertical centering */
+  height: 40vh; /* Or use specific height */
 }
 .dash-container__body {
   display: flex;
@@ -77,17 +80,13 @@ $tool-bar-border_color: #171515;
   transition: all 0.3s ease;
   background-color: $logo-color;
   justify-content: center;
-  color: black;
+  color: $main-color;
   &:hover {
-    background-color: rgb(4, 4, 4);
-    color: $logo-color;
+    filter: brightness(1.1);
   }
 }
 .logo_text {
   padding: 1px;
-  &:hover {
-    color: $logo-color;
-  }
 }
 
 .dropdown-item {
@@ -118,7 +117,7 @@ $tool-bar-border_color: #171515;
   padding: 2px 4px;
   font-size: 10px;
   font-weight: 500;
-  color: black;
+  color: $main-color;
   text-transform: uppercase;
   transition: all 0.3s ease;
   &:hover {
@@ -158,4 +157,11 @@ $tool-bar-border_color: #171515;
 
 .summary__item__header__badge {
   color: black;
+}
+.tab-custom {
+  font-size: 10px; /* Adjust the font size */
+  padding: 4px 8px; /* Adjust the padding around the tab text */
+}
+.navbar-custom {
+  height: 50px; /* Adjust the height as needed */
 }

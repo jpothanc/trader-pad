@@ -13,16 +13,7 @@ const TicketToolBar = () => {
     <>
       <div className="actions-nav-bar">
         <div className="actions-nav-bar__content">
-          <div>
-            <button
-              className="toolbar-btn"
-              onClick={() =>
-                eventManager.publish(getUIEvent(EventId.MSG_UI_REFRESH_TICKETS))
-              }
-            >
-              &nbsp;&nbsp;R&nbsp;&nbsp;
-            </button>
-          </div>
+          <div></div>
           <div className="functions">
             <button
               className="toolbar-btn"
@@ -30,7 +21,7 @@ const TicketToolBar = () => {
                 eventManager.publish(getUIEvent(EventId.MSG_UI_ORDER_ENTRY))
               }
             >
-              Order Entry 
+              Order Entry
             </button>
             <button
               className="toolbar-btn"

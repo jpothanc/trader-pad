@@ -3,6 +3,10 @@ import { useMemo, useRef } from "react";
 import "ag-grid-community/styles/ag-grid.css";
 import "ag-grid-community/styles/ag-theme-alpine.css";
 import "ag-grid-community/styles/ag-theme-material.css";
+import { InstanceNames, getInstance } from "../utils/factory";
+import { EventId, IEventManager } from "../services/EventManager";
+import { getUIEventWithPayload } from "../utils/dialogUtils";
+import { createSummaryRequest } from "../models/Requests";
 
 type blotterProps = {
   columnDefs: any;
@@ -12,8 +16,9 @@ type blotterProps = {
 
 const BasicGrid = ({ columnDefs, rowData, theme }: blotterProps) => {
   const containerStyle = useMemo(() => ({ width: "100%", height: "90%" }), []);
-  const gridStyle = useMemo(() => ({ width: "100%" }), []);
+  const gridStyle = useMemo(() => ({ height: 400, width: "100%" }), []);
   const gridRef = useRef<AgGridReact>(null);
+  const eventManager = getInstance(InstanceNames.EventManager) as IEventManager;
 
   const defaultColDef = useMemo(
     () => ({
@@ -27,7 +32,17 @@ const BasicGrid = ({ columnDefs, rowData, theme }: blotterProps) => {
 
   const onSelectionChanged = () => {
     const selectedRows = gridRef?.current?.api.getSelectedRows();
-    console.log(selectedRows);
+    if (selectedRows != null && selectedRows?.length > 0) {
+      console.log(selectedRows[0]["orderid"]);
+      const summaryRequest = createSummaryRequest(selectedRows);
+
+      eventManager.publish(
+        getUIEventWithPayload(
+          EventId.MSG_UI_GRID_SELECTION_CHANGE,
+          summaryRequest
+        )
+      );
+    }
     // gridRef?.current?.api.applyTransaction({ add: [item] }); // Insert the row
   };
 
@@ -47,9 +62,9 @@ const BasicGrid = ({ columnDefs, rowData, theme }: blotterProps) => {
           rowSelection="multiple"
           rowHeight={25}
           headerHeight={25}
-          animateRows={true}
+          animateRows={false}
           ref={gridRef}
-          domLayout="autoHeight"
+          //domLayout="autoHeight"
           onSelectionChanged={() => onSelectionChanged()}
         />
       </div>

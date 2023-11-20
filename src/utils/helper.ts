@@ -8,7 +8,6 @@ import {
   FaSwatchbook,
 } from "react-icons/fa6";
 import { GiSpiderWeb } from "react-icons/gi";
-import { MdDynamicFeed } from "react-icons/md";
 
 export function getIcon(icon: IconType, size: string): any | undefined {
   return React.createElement(icon, {

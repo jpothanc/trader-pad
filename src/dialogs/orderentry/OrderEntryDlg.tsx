@@ -1,6 +1,5 @@
-import { Ref, forwardRef, useImperativeHandle, useState } from "react";
+import { Ref, forwardRef, useImperativeHandle, useRef, useState } from "react";
 import { Container } from "react-bootstrap";
-import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import OrderEntry from "./OrderEntry";
 import { ModalRef } from "../../utils/dialogUtils";
@@ -49,6 +48,15 @@ const OrderEntryDlg = forwardRef(({}: Props, ref: Ref<ModalRef>) => {
     close: handleClose,
     setDetails: handleDetails,
   }));
+  const childFormRef = useRef<HTMLFormElement>(null);
+
+  const handleSubmit = () => {
+    if (childFormRef.current) {
+      childFormRef.current.dispatchEvent(
+        new Event("submit", { cancelable: true })
+      );
+    }
+  };
 
   return (
     <>
@@ -57,7 +65,7 @@ const OrderEntryDlg = forwardRef(({}: Props, ref: Ref<ModalRef>) => {
           <Modal.Header closeButton>
             <Modal.Title
               style={{
-                fontSize: "10px",
+                fontSize: "14px",
               }}
             >
               {formState.title}
@@ -66,14 +74,10 @@ const OrderEntryDlg = forwardRef(({}: Props, ref: Ref<ModalRef>) => {
           </Modal.Header>
           <Modal.Body>
             <Container>
-              <OrderEntry />
+              <OrderEntry ref={childFormRef} />
             </Container>
           </Modal.Body>
-          <Modal.Footer>
-            <Button variant="secondary" size="sm" onClick={handleClose}>
-              Close
-            </Button>
-          </Modal.Footer>
+         
         </Modal>
       </div>
     </>

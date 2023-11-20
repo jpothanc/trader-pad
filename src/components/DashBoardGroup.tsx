@@ -47,7 +47,7 @@ const DashBoardGroup = ({ dashGroup }: Props) => {
               >
                 {dashItem.title}
               </span>
-              <Badge bg="success">
+              <Badge bg="light">
                 <span className="dash-badge">{dashItem.description}</span>
               </Badge>
             </div>

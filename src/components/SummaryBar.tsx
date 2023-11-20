@@ -1,61 +1,52 @@
-import { Badge } from "react-bootstrap";
+//Executed Value, Qty, AvgPrice
+//Buy/Sell Value, Buy/Sell Exec Value
+//BPS from VWAP,
+//Pending Qty
 
+import useUIEvents from "../hooks/events/useUIEvents";
+import { EventData, EventId } from "../services/EventManager";
+
+import { getSummaryBarApi, post } from "../utils/restHelper";
+import { OrderSummaryInfo } from "../models/OrderSummaryInfo";
+import { useState } from "react";
+import SummaryBarItem from "./SummaryBarItem";
 const SummaryBar = () => {
+  const [data, setData] = useState<OrderSummaryInfo>({} as OrderSummaryInfo);
+
+  useUIEvents({
+    uiEvents: (event: EventData) => {
+      switch (event.id) {
+        case EventId.MSG_UI_GRID_SELECTION_CHANGE:
+          getSummaryData(event.payload);
+          console.log("Summary Bar Change");
+          break;
+      }
+    },
+  });
+
+  async function getSummaryData(payload: any): Promise<void> {
+    const responseData = await post(getSummaryBarApi(), payload.data);
+    const data = (await responseData.json()) as OrderSummaryInfo;
+    setData(data);
+    Object.keys(data).forEach((key) => {
+      console.log(`${key} = ${data[key as keyof OrderSummaryInfo]}`);
+    });
+  }
+
   return (
     <>
       <div className="summary">
-        <div className="summary__item">
-          <div className="summary__item__value">10</div>
-          <div className="summary__item__header">
-            <Badge pill bg="danger">
-              <span className="summary__item__header__badge">tickets</span>
-            </Badge>
-          </div>
-        </div>
-
-        <div className="summary__item">
-          <div className="summary__item__value">1000</div>
-          <div className="summary__item__header">
-            <Badge pill bg="danger">
-              <span className="summary__item__header__badge">size</span>
-            </Badge>
-          </div>
-        </div>
-
-        <div className="summary__item">
-          <div className="summary__item__value">15,000 HKD</div>
-          <div className="summary__item__header">
-            <Badge pill bg="danger">
-              <span className="summary__item__header__badge">notional</span>
-            </Badge>
-          </div>
-        </div>
-        <div className="summary__item">
-          <div className="summary__item__value">1200</div>
-          <div className="summary__item__header">
-            <Badge pill bg="danger">
-              <span className="summary__item__header__badge">usd notional</span>
-            </Badge>
-          </div>
-        </div>
-
-        <div className="summary__item">
-          <div className="summary__item__value">45.18</div>
-          <div className="summary__item__header">
-            <Badge pill bg="success">
-              <span className="summary__item__header__badge">vwap</span>
-            </Badge>
-          </div>
-        </div>
-
-        <div className="summary__item">
-          <div className="summary__item__value">volume</div>
-          <div className="summary__item__header">
-            <Badge pill bg="success">
-              <span className="summary__item__header__badge">volume</span>
-            </Badge>
-          </div>
-        </div>
+        <SummaryBarItem header="value" value={data.orderValue} />
+        <SummaryBarItem header="execValue" value={data.execValue} />
+        <SummaryBarItem header="pendingValue" value={data.pendingValue} />
+        <SummaryBarItem header="size" value={data.size} />
+        <SummaryBarItem header="executed" value={data.executed} />
+        <SummaryBarItem header="pending" value={data.pending} />
+        <SummaryBarItem
+          header="marketPercent"
+          value={data.marketPercent}
+          color="success"
+        />
       </div>
     </>
   );

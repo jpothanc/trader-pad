@@ -8,6 +8,7 @@ import { IOrderCache } from "../services/OrderCache";
 import TicketToolBar from "../components/TicketToolBar";
 import useUIEvents from "../hooks/events/useUIEvents";
 import SummaryBar from "../components/SummaryBar";
+import { EventData, EventId } from "../services/EventManager";
 
 const TicketBlotterApp = () => {
   const [rowData, setRowData] = useState<any>([]);
@@ -15,7 +16,16 @@ const TicketBlotterApp = () => {
   const cache = useMemo(() => getInstance("OrderCache") as IOrderCache, []);
   useOrderEvents({ setOrders: setRowData });
   const columnDefs = useMemo(() => gridHelper.fetchColumnDefs(), []);
-  useUIEvents({ uiEvents: () => refreshBlotter() });
+  
+  useUIEvents({
+    uiEvents: (event: EventData) => {
+      switch (event.id) {
+        case EventId.MSG_UI_REFRESH_TICKETS:
+          refreshBlotter();
+          break;
+      }
+    },
+  });
 
   const refreshBlotter = useCallback(() => {
     console.log("Refreshing Blotter");
@@ -25,13 +35,25 @@ const TicketBlotterApp = () => {
   return (
     <>
       <TicketToolBar />
-      <SummaryBar/> 
-    {/* Tickets:({cache.getSize()}) */}
-      <BasicGrid
-        columnDefs={columnDefs}
-        rowData={rowData}
-        theme={config.app.theme}
-      />
+      <SummaryBar />
+      {/* Tickets:({cache.getSize()}) */}
+      <div
+        style={{
+          display: "flex",
+        }}
+      >
+        <div style={{ width: "30px", paddingLeft: "5px" }}>
+          {" "}
+          <button className="toolbar-btn" onClick={refreshBlotter}>
+            &nbsp;R&nbsp;
+          </button>
+        </div>
+        <BasicGrid
+          columnDefs={columnDefs}
+          rowData={rowData}
+          theme={config.app.theme}
+        />
+      </div>
     </>
   );
 };

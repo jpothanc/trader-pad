@@ -217,38 +217,3 @@ alt + done to move the linw
   }
 }
 
-/* Style for the container */
-.oe-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  width: 100%;
-  border: #ff9900 solid 1px;
-}
-.oe-input-container {
-  border: #007bff solid 1px;
-}
-
-.oe-input-container1 {
-  border: #007bff solid 1px;
-  display: flex;
-  justify-content: flex-end;
-}
-/* Custom input styles */
-.oe-input {
-  width: 200px; /* Adjust the width as needed */
-  padding: 5px;
-  font-size: 13px;
-  border: 2px solid #ccc;
-  border-radius: 5px;
-  outline: none;
-  background-color: black;
-  color: #dfeaf7;
-  transition: border-color 0.2s;
-}
-
-/* Add a border color change on focus */
-.oe-input:focus {
-  border-color: #007bff; /* Adjust the color as needed */
-  background-color: black;
-}

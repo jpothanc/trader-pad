@@ -7,7 +7,10 @@ Trading Pad is a simple trading app that I'm putting together to get the hang of
 
 Some screenshots
 
-![image](https://github.com/jpothanc/trader-pad/assets/70871841/09fd31c8-1e5c-4699-bc5c-2dd993e6516e)
+Dashboard
+![image](https://github.com/jpothanc/trader-pad/assets/70871841/8c6f474e-75e8-41e5-9d1f-044560c213ba)
 
+
+Order Pad
 ![image](https://github.com/jpothanc/trader-pad/assets/70871841/0d818e8d-e1f1-4452-95a0-556913291163)
 

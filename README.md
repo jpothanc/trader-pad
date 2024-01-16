@@ -8,11 +8,11 @@ Trading Pad is a simple trading app that I'm putting together to get the hang of
 Some screenshots
 
 Dashboard
-<img src="https://github.com/jpothanc/trader-pad/assets/70871841/8c6f474e-75e8-41e5-9d1f-044560c213ba)" width="600" height = "200">
+<img src="https://github.com/jpothanc/trader-pad/assets/70871841/8c6f474e-75e8-41e5-9d1f-044560c213ba)" width="800" height = "200">
 
 
 
 Order Pad
-<img src="https://github.com/jpothanc/trader-pad/assets/70871841/0d818e8d-e1f1-4452-95a0-556913291163" width="700" height = "200">
+<img src="https://github.com/jpothanc/trader-pad/assets/70871841/0d818e8d-e1f1-4452-95a0-556913291163" width="800" height = "200">
 
 

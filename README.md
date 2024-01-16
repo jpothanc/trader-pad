@@ -13,6 +13,6 @@ Dashboard
 
 
 Order Pad
-<img src="https://github.com/jpothanc/trader-pad/assets/70871841/0d818e8d-e1f1-4452-95a0-556913291163" width="600" height = "200">
+<img src="https://github.com/jpothanc/trader-pad/assets/70871841/0d818e8d-e1f1-4452-95a0-556913291163" width="700" height = "200">
 
 

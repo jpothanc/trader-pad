@@ -8,7 +8,7 @@ Trading Pad is a simple trading app that I'm putting together to get the hang of
 Some screenshots
 
 Dashboard
-<img src="https://github.com/favicon.ico](https://github.com/jpothanc/trader-pad/assets/70871841/8c6f474e-75e8-41e5-9d1f-044560c213ba)" width="48">
+<img src="https://github.com/jpothanc/trader-pad/assets/70871841/8c6f474e-75e8-41e5-9d1f-044560c213ba)" width="48">
 
 
 
